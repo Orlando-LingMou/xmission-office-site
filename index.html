@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xmission Office · 专注学习与办公的桌面日程工作台</title>
+  <meta name="description" content="Xmission Office 版：以极简毛玻璃桌面形态，把学习规划、工作待办、课表日历、AI 参谋与专注番茄钟融为一体，本地优先、轻盈常驻。" />
+  <meta property="og:title" content="Xmission Office · 秩序在眼前，专注成日常" />
+  <meta property="og:description" content="面向深度研学与日常办公的本地桌面日程工作台：三窗口形态、空档智能排序、可选 AI 参谋、全屏专注番茄钟与四套静谧主题。" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("xmission-office-site-theme");
+        const dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.documentElement.setAttribute("data-theme", "dark");
+      } catch {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased m-0 p-0">
+
+  <!-- Soft Translucent Ambient Light Backdrop -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="ambient-scene-wash"></div>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- Main Content Layer -->
+  <div class="relative z-10">
+
+    <!-- Frosted Glass Navigation -->
+    <header class="sticky top-0 z-40 glass-nav">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-2.5 flex items-center justify-between gap-4">
+        <a href="#top" class="flex items-center gap-2.5 text-[var(--foreground)] no-underline">
+          <img src="assets/icon.png" alt="Xmission Office" class="w-7 h-7 rounded-lg object-contain" />
+          <div class="flex items-baseline gap-2">
+            <span class="font-semibold tracking-tight text-sm">Xmission</span>
+            <span class="text-xs font-medium tracking-wide text-[var(--muted-foreground)]">Office</span>
+          </div>
+        </a>
+
+        <nav aria-label="主导航" class="hidden md:flex items-center gap-7 text-xs text-[var(--muted-foreground)]">
+          <a href="#workspace" class="hover:text-[var(--foreground)] transition-colors no-underline">桌面工作台</a>
+          <a href="#capabilities" class="hover:text-[var(--foreground)] transition-colors no-underline">学习与办公能力</a>
+          <a href="#ai-studio" class="hover:text-[var(--foreground)] transition-colors no-underline">AI 参谋演示</a>
+          <a href="#atmosphere" class="hover:text-[var(--foreground)] transition-colors no-underline">静谧主题</a>
+          <a href="#trust" class="hover:text-[var(--foreground)] transition-colors no-underline">本地与安全</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button type="button" id="theme-mode-toggle" aria-label="切换浅色或深色模式" title="切换日间 / 夜间模式" class="glass-pill-surface px-2.5 py-1.5 rounded-lg text-xs text-[var(--foreground)] cursor-pointer hover:opacity-85 transition-opacity">
+            <span id="theme-mode-label">夜间模式</span>
+          </button>
+          <span class="hidden sm:inline-block text-xs font-mono text-[var(--muted-foreground)] px-2.5 py-1.5 rounded-lg glass-pill-surface">v0.67</span>
+          <a href="#get-started" class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition-opacity no-underline">
+            立即了解
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Editorial Split Hero: Concept + Live Interactive Glass Office Widget -->
+      <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-14 pb-16 sm:pt-20 sm:pb-24">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Left Copy -->
+          <div class="lg:col-span-7 space-y-6 reveal" style="--d: 0ms;">
+            <p class="text-xs font-mono tracking-[0.18em] uppercase text-[var(--muted-foreground)]">
+              XMISSION OFFICE EDITION · STUDY &amp; WORK DESKTOP SUITE
+            </p>
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.15] text-[var(--foreground)]">
+              秩序在眼前，<br />专注成日常。
+            </h1>
+            <p class="text-base sm:text-lg leading-relaxed text-[var(--muted-foreground)] max-w-xl">
+              为深度研学与日常办公打造的本地桌面工作台。以<strong>轻盈半透明悬浮层</strong>常驻屏幕一隅，将待办优先级、课程与会议排期、AI 参谋及沉浸番茄钟凝练于一方静谧空间——不喧哗、不打断、每一步都有正向回馈。
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a href="#workspace" class="px-5 py-2.5 rounded-lg text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition-opacity no-underline">
+                浏览实机界面
+              </a>
+              <a href="#ai-studio" class="px-5 py-2.5 rounded-lg text-xs font-medium glass-pill-surface text-[var(--foreground)] hover:opacity-90 transition-opacity no-underline">
+                体验 AI 一句话建任务
+              </a>
+            </div>
+
+            <div class="pt-4 grid grid-cols-3 gap-4 max-w-lg border-t border-[var(--border)]/60 text-xs">
+              <div>
+                <div class="font-semibold text-[var(--foreground)]">三窗口形态</div>
+                <div class="text-[var(--muted-foreground)] mt-0.5">主台 · 悬浮窗 · 悬浮球</div>
+              </div>
+              <div>
+                <div class="font-semibold text-[var(--foreground)]">本地 SQLite</div>
+                <div class="text-[var(--muted-foreground)] mt-0.5">离线可用 · 一键日报备份</div>
+              </div>
+              <div>
+                <div class="font-semibold text-[var(--foreground)]">跨平台原生</div>
+                <div class="text-[var(--muted-foreground)] mt-0.5">Tauri 2 + Rust 轻量架构</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Interactive Glassmorphic Office Floating Widget Demo -->
+          <div class="lg:col-span-5 reveal" style="--d: 120ms;">
+            <div class="glass-card tilt-card rounded-2xl p-5 sm:p-6" id="live-glass-widget">
+              <div class="glass-card-inner space-y-4">
+                <!-- Widget Top Bar -->
+                <div class="flex items-center justify-between gap-2 pb-3 border-b border-[var(--border)]/60">
+                  <div class="flex items-center gap-2">
+                    <img src="assets/icon.png" alt="" class="w-4 h-4 rounded-sm" />
+                    <span class="text-xs font-semibold tracking-wide">Xmission Office · 今日待办</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs font-mono text-[var(--muted-foreground)]">
+                    <span id="demo-pomo-readout" class="tabular-nums text-[var(--foreground)] font-semibold">25:00</span>
+                    <button type="button" id="demo-pomo-toggle" class="px-2 py-0.5 rounded-md glass-pill-surface text-xs text-[var(--foreground)] cursor-pointer hover:opacity-85">
+                      开始专注
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Level & Gentle Progress -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between gap-2 text-xs">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="font-medium text-[var(--foreground)] shrink-0">Lv.<span id="demo-level" class="font-mono">7</span> · 专注节奏</span>
+                      <span id="demo-float-slot" class="text-xs font-mono font-semibold text-[var(--primary)] whitespace-nowrap"></span>
+                    </div>
+                    <div class="flex items-center gap-3 font-mono tabular-nums text-[var(--muted-foreground)] shrink-0">
+                      <span><strong id="demo-xp-text" class="text-[var(--foreground)]">460</strong> / 700 XP</span>
+                      <span><strong id="demo-coins" class="text-[var(--primary)]">428</strong> 积分</span>
+                    </div>
+                  </div>
+                  <div class="h-2 rounded-full bg-[var(--secondary)] overflow-hidden">
+                    <div id="demo-xp-bar" class="xp-bar-fill h-full rounded-full bg-[var(--primary)]" style="width: 65.7%;"></div>
+                  </div>
+                </div>
+
+                <!-- Interactive Checkable Office/Study Tasks -->
+                <div class="space-y-1.5" id="demo-task-list">
+                  <button type="button" data-xp="26" class="office-task-row w-full text-left flex items-start gap-3 p-2.5 rounded-xl border border-transparent hover:border-[var(--border)]/60 bg-transparent cursor-pointer">
+                    <span class="demo-check mt-0.5 w-4 h-4 rounded border border-[var(--primary)] flex items-center justify-center text-[11px] shrink-0"></span>
+                    <div class="min-w-0 flex-1">
+                      <div class="demo-title text-xs font-medium text-[var(--foreground)] truncate">完成 Q4 产品路线图评审纪要</div>
+                      <div class="text-xs text-[var(--muted-foreground)] mt-0.5">主线 · 重要度 5 · 适合 10:00–11:30 空档</div>
+                    </div>
+                    <span class="text-xs font-mono text-[var(--muted-foreground)] shrink-0">+26 XP</span>
+                  </button>
+
+                  <button type="button" data-xp="21" class="office-task-row w-full text-left flex items-start gap-3 p-2.5 rounded-xl border border-transparent hover:border-[var(--border)]/60 bg-transparent cursor-pointer">
+                    <span class="demo-check mt-0.5 w-4 h-4 rounded border border-[var(--primary)] flex items-center justify-center text-[11px] shrink-0"></span>
+                    <div class="min-w-0 flex-1">
+                      <div class="demo-title text-xs font-medium text-[var(--foreground)] truncate">研读系统架构论文并输出一页摘要</div>
+                      <div class="text-xs text-[var(--muted-foreground)] mt-0.5">支线 · AI 计划今日 · 预估 45 分钟</div>
+                    </div>
+                    <span class="text-xs font-mono text-[var(--muted-foreground)] shrink-0">+21 XP</span>
+                  </button>
+
+                  <button type="button" data-xp="17" class="office-task-row w-full text-left flex items-start gap-3 p-2.5 rounded-xl border border-transparent hover:border-[var(--border)]/60 bg-transparent cursor-pointer">
+                    <span class="demo-check mt-0.5 w-4 h-4 rounded border border-[var(--primary)] flex items-center justify-center text-[11px] shrink-0"></span>
+                    <div class="min-w-0 flex-1">
+                      <div class="demo-title text-xs font-medium text-[var(--foreground)] truncate">每日英语精读与专业术语整理</div>
+                      <div class="text-xs text-[var(--muted-foreground)] mt-0.5">日常循环 · 已连续打卡 12 天</div>
+                    </div>
+                    <span class="text-xs font-mono text-[var(--muted-foreground)] shrink-0">+17 XP</span>
+                  </button>
+
+                  <button type="button" data-xp="14" class="office-task-row w-full text-left flex items-start gap-3 p-2.5 rounded-xl border border-transparent hover:border-[var(--border)]/60 bg-transparent cursor-pointer">
+                    <span class="demo-check mt-0.5 w-4 h-4 rounded border border-[var(--primary)] flex items-center justify-center text-[11px] shrink-0"></span>
+                    <div class="min-w-0 flex-1">
+                      <div class="demo-title text-xs font-medium text-[var(--foreground)] truncate">核对下周组会演示文稿与数据表</div>
+                      <div class="text-xs text-[var(--muted-foreground)] mt-0.5">事务 · 截止明日 18:00</div>
+                    </div>
+                    <span class="text-xs font-mono text-[var(--muted-foreground)] shrink-0">+14 XP</span>
+                  </button>
+                </div>
+
+                <div class="pt-2 border-t border-[var(--border)]/60 flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+                  <span>点击上方任意任务体验即时正反馈</span>
+                  <span id="demo-done-count" class="font-mono tabular-nums">已完成 0 / 4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real Workspace Showcase (Translucent Glass Frame + Sliding Pill Tabs) -->
+      <section id="workspace" class="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 reveal">
+          <div class="max-w-xl">
+            <p class="text-xs font-mono uppercase tracking-[0.16em] text-[var(--muted-foreground)]">Real Desktop Experience</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-bold tracking-tight">一处工作台，承接从规划到落地的全流程</h2>
+          </div>
+
+          <div class="seg-track" role="tablist" aria-label="实机界面切换" id="workspace-tabs">
+            <div class="seg-indicator" id="workspace-indicator"></div>
+            <button type="button" role="tab" aria-selected="true" data-view="study" class="seg-btn">手账任务台</button>
+            <button type="button" role="tab" aria-selected="false" data-view="schedule" class="seg-btn">周课表排期</button>
+            <button type="button" role="tab" aria-selected="false" data-view="plan" class="seg-btn">日历与 AI 周计划</button>
+            <button type="button" role="tab" aria-selected="false" data-view="focus" class="seg-btn">全屏专注</button>
+            <button type="button" role="tab" aria-selected="false" data-view="widget" class="seg-btn">桌面悬浮窗</button>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-3 sm:p-4 reveal" style="--d: 90ms;">
+          <div class="glass-card-inner">
+            <div class="px-3 pb-3 flex items-center justify-between gap-4 text-xs text-[var(--muted-foreground)]">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-[var(--border)]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[var(--border)]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[var(--border)]"></span>
+                <span id="workspace-caption" class="ml-1.5 truncate">羊皮纸手账视图 · 温润纸感排版、主章/支章层级与晨光风景侧栏，专注阅读不刺眼</span>
+              </div>
+              <button type="button" id="workspace-zoom" class="shrink-0 bg-transparent border-0 p-0 text-xs text-[var(--link)] hover:underline cursor-pointer">
+                放大检视
+              </button>
+            </div>
+            <div class="rounded-xl overflow-hidden border border-[var(--border)]/60 bg-[var(--content)]/60 cursor-zoom-in flex justify-center" id="workspace-stage">
+              <img id="workspace-img" src="assets/theme_02_parchment.webp" alt="Xmission Office 实机工作台界面" class="screen-img w-full h-auto block" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Four Core Study & Office Glass Feature Cards -->
+      <section id="capabilities" class="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+        <div class="max-w-2xl mb-10 reveal">
+          <p class="text-xs font-mono uppercase tracking-[0.16em] text-[var(--muted-foreground)]">Design Philosophy</p>
+          <h2 class="mt-2 text-2xl sm:text-3xl font-bold tracking-tight">克制而有温度，为高专注学习与办公设计</h2>
+          <p class="mt-2.5 text-sm leading-relaxed text-[var(--muted-foreground)]">
+            剥离冗余社交与噪音弹窗，只保留真正提升推进感的四项核心设计原则。
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <article class="glass-card tilt-card rounded-2xl p-6 sm:p-7 reveal" style="--d: 0ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--muted-foreground)]">
+                <span>01 / ALWAYS IN SIGHT</span>
+                <span>三窗口常驻</span>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight">把日程留在视线余光，而不是埋进标签页</h3>
+              <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+                写文档、查论文或写代码时，<strong>透明置顶悬浮任务栏</strong>安静停靠屏幕边缘，支持调节透明度、靠边自动隐藏或一键收起为 43×43 圆形悬浮球；无需频繁切屏即可勾选进度与掌控番茄钟。
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card tilt-card rounded-2xl p-6 sm:p-7 reveal" style="--d: 80ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--muted-foreground)]">
+                <span>02 / SCHEDULE-AWARE RANKING</span>
+                <span>空档智能排序</span>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight">结合课表与固定排期，自动推荐当下最该做的事</h3>
+              <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+                导入课程或固定会议后，内置规则引擎自动测算当日 08:00–22:00 的剩余连续空档，综合逾期状态、今日日常、AI 计划日与估时契合度动态排序，消除“面对清单却不知从何下手”的决策消耗。
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card tilt-card rounded-2xl p-6 sm:p-7 reveal" style="--d: 140ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--muted-foreground)]">
+                <span>03 / DEEP FLOW MODE</span>
+                <span>一拖进入专注</span>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight">轻轻一拖，让繁杂列表退到风景之后</h3>
+              <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+                主界面风景侧栏可随时调节宽度；向右拖过 2/3 即可展开<strong>全屏沉浸专注番茄钟</strong>。无多余边框干扰，支持 1–180 分钟灵活定时，意外关闭或重启时自动冻结剩余秒数，保护每一次心流。
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card tilt-card rounded-2xl p-6 sm:p-7 reveal" style="--d: 200ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--muted-foreground)]">
+                <span>04 / SUSTAINABLE MOTIVATION</span>
+                <span>轻度正向回馈</span>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight">以凌晨 4:00 为日界，让长期坚持更有人情味</h3>
+              <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+                完成任务、子步骤与专注计时自动累计透明账本积分，可用于兑换你为自己设定的咖啡、午休或周末奖励。专为熬夜研学与加班设计的<strong>凌晨 4:00 任务日分界</strong>，深夜收尾也不误断连击。
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Interactive AI Study & Office Studio -->
+      <section id="ai-studio" class="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Left: Interactive AI One-Line Capture Simulator -->
+          <div class="lg:col-span-5 space-y-5 reveal">
+            <div>
+              <p class="text-xs font-mono uppercase tracking-[0.16em] text-[var(--muted-foreground)]">AI Copilot · Draft First</p>
+              <h2 class="mt-2 text-2xl sm:text-3xl font-bold tracking-tight">说一句话，AI 整理成可核对的工作草稿</h2>
+              <p class="mt-2.5 text-sm leading-relaxed text-[var(--muted-foreground)]">
+                兼容所有 OpenAI API 协议服务商，自带密钥按需触发。AI 输出永远先落入可编辑草稿，把最终决定权留给你。
+              </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 space-y-4">
+              <div class="glass-card-inner space-y-3.5">
+                <div class="text-xs font-medium text-[var(--muted-foreground)]">点击下方典型办公 / 学习场景，实时体验结构化解析：</div>
+                <div class="flex flex-wrap gap-2" id="ai-presets">
+                  <button type="button" data-preset="0" class="glass-pill-surface px-3 py-1.5 rounded-lg text-xs text-[var(--foreground)] cursor-pointer hover:opacity-85">季度复盘报告</button>
+                  <button type="button" data-preset="1" class="glass-pill-surface px-3 py-1.5 rounded-lg text-xs text-[var(--foreground)] cursor-pointer hover:opacity-85">论文文献精读</button>
+                  <button type="button" data-preset="2" class="glass-pill-surface px-3 py-1.5 rounded-lg text-xs text-[var(--foreground)] cursor-pointer hover:opacity-85">项目周会同步</button>
+                </div>
+
+                <div class="p-3 rounded-xl border border-[var(--border)]/70 bg-[var(--content)]/65 text-xs leading-relaxed text-[var(--foreground)]" id="ai-input-preview">
+                  “周五下午 5 点前完成机器学习实验报告，很重要，大概需要 90 分钟”
+                </div>
+
+                <div class="p-4 rounded-xl border border-[var(--primary)]/45 bg-[var(--background)]/55 space-y-2.5 transition-all" id="ai-draft-output">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-semibold text-[var(--primary)]">结构化任务草稿（确认后入库）</span>
+                    <span id="ai-out-cat" class="font-mono text-[var(--muted-foreground)]">分类 · study</span>
+                  </div>
+                  <div id="ai-out-title" class="text-sm font-bold text-[var(--foreground)]">完成机器学习课程实验报告</div>
+                  <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <span id="ai-out-imp" class="px-2 py-0.5 rounded glass-pill-surface">重要度 5/5</span>
+                    <span id="ai-out-urg" class="px-2 py-0.5 rounded glass-pill-surface">紧迫度 4/5</span>
+                    <span id="ai-out-due" class="px-2 py-0.5 rounded glass-pill-surface">截止 周五 17:00</span>
+                    <span id="ai-out-est" class="px-2 py-0.5 rounded glass-pill-surface">估时 90 分钟</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Real Screenshots of AI Draft & AI Weekly Plan -->
+          <div class="lg:col-span-7 space-y-5 reveal" style="--d: 110ms;">
+            <div class="glass-card rounded-2xl p-3 sm:p-4">
+              <div class="glass-card-inner space-y-3">
+                <div class="flex items-center justify-between px-2">
+                  <div class="flex flex-wrap gap-2" id="ai-shot-tabs">
+                    <button type="button" data-src="assets/02_tasks_ai_draft.webp" data-cap="实机截图 · AI 一句话解析草稿确认卡，所有字段支持二次微调" aria-selected="true" class="px-3 py-1 rounded-md text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] border-0 cursor-pointer">一句话录入草稿</button>
+                    <button type="button" data-src="assets/04b_calendar_ai_plan_panel.webp" data-cap="实机截图 · AI 周计划参谋，结合课表空档生成每日时段建议" aria-selected="false" class="px-3 py-1 rounded-md text-xs font-medium glass-pill-surface text-[var(--muted-foreground)] cursor-pointer">AI 周计划排程</button>
+                    <button type="button" data-src="assets/01b_task_steps_detail.webp" data-cap="实机截图 · 任务详情双页卡与 TipTap 富文本备注编辑器" aria-selected="false" class="px-3 py-1 rounded-md text-xs font-medium glass-pill-surface text-[var(--muted-foreground)] cursor-pointer">步骤与富文本备注</button>
+                  </div>
+                </div>
+                <div class="rounded-xl overflow-hidden border border-[var(--border)]/60 cursor-zoom-in" id="ai-shot-wrap">
+                  <img id="ai-shot-img" src="assets/02_tasks_ai_draft.webp" loading="lazy" alt="AI 参谋实机截图" class="screen-img w-full h-auto block" />
+                </div>
+                <p id="ai-shot-cap" class="px-2 text-xs text-[var(--muted-foreground)] m-0">实机截图 · AI 一句话解析草稿确认卡，所有字段支持二次微调</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Atmosphere & Four Themes Showcase -->
+      <section id="atmosphere" class="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 reveal">
+          <div class="max-w-2xl">
+            <p class="text-xs font-mono uppercase tracking-[0.16em] text-[var(--muted-foreground)]">Calm Visual Atmosphere</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-bold tracking-tight">四套静谧美术主题，随晨昏与天气自然呼吸</h2>
+            <p class="mt-2.5 text-sm leading-relaxed text-[var(--muted-foreground)]">
+              24 张压缩 WebP 风景按电脑本地时间切换六个光影时段，窗口收起至托盘时自动暂停粒子与天气轮询，既赏心悦目又极致省电。
+            </p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <button type="button" data-lightbox-src="assets/theme_02_parchment.webp" data-lightbox-cap="V3 羊皮纸手账 · 暖纸墨蓝与清晰排版，专为研学手记与办公阅读推荐" class="glass-card tilt-card rounded-2xl p-3 text-left cursor-pointer reveal" style="--d: 0ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="rounded-xl overflow-hidden border border-[var(--border)]/60 aspect-[16/10]">
+                <img src="assets/theme_02_parchment.webp" loading="lazy" alt="V3 羊皮纸手账主题" class="w-full h-full object-cover block" />
+              </div>
+              <div class="px-1 pb-1">
+                <div class="text-xs font-mono text-[var(--primary)]">办公研学推荐</div>
+                <div class="text-sm font-bold text-[var(--foreground)] mt-0.5">羊皮纸手账</div>
+                <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed m-0">暖色纸底与墨蓝丝带，主章 / 支章 / 见闻清晰利落。</p>
+              </div>
+            </div>
+          </button>
+
+          <button type="button" data-lightbox-src="assets/theme_03_island.webp" data-lightbox-cap="V4 动森小岛 · 柔和奶油圆角纸感，缓解长时间面对屏幕的视觉紧张" class="glass-card tilt-card rounded-2xl p-3 text-left cursor-pointer reveal" style="--d: 70ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="rounded-xl overflow-hidden border border-[var(--border)]/60 aspect-[16/10]">
+                <img src="assets/theme_03_island.webp" loading="lazy" alt="V4 动森小岛主题" class="w-full h-full object-cover block" />
+              </div>
+              <div class="px-1 pb-1">
+                <div class="text-xs font-mono text-[var(--muted-foreground)]">日间舒缓</div>
+                <div class="text-sm font-bold text-[var(--foreground)] mt-0.5">动森小岛</div>
+                <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed m-0">柔和奶油圆角与舒缓绿意，减轻高压日程焦虑。</p>
+              </div>
+            </div>
+          </button>
+
+          <button type="button" data-lightbox-src="assets/theme_01_jrpg.webp" data-lightbox-cap="V2 暮色 JRPG · 深海军蓝夜间护眼配色，适合夜晚深度编码与专注推进" class="glass-card tilt-card rounded-2xl p-3 text-left cursor-pointer reveal" style="--d: 140ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="rounded-xl overflow-hidden border border-[var(--border)]/60 aspect-[16/10]">
+                <img src="assets/theme_01_jrpg.webp" loading="lazy" alt="V2 暮色 JRPG 主题" class="w-full h-full object-cover block" />
+              </div>
+              <div class="px-1 pb-1">
+                <div class="text-xs font-mono text-[var(--muted-foreground)]">深色护眼</div>
+                <div class="text-sm font-bold text-[var(--foreground)] mt-0.5">暮色 JRPG</div>
+                <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed m-0">深海蓝夜色与高对比金框，夜间研学与开发首选。</p>
+              </div>
+            </div>
+          </button>
+
+          <button type="button" data-lightbox-src="assets/theme_04_stardew.webp" data-lightbox-cap="V5 星露谷农场 · 木框羊皮纸与四季田园光影，把每日积累种成丰收" class="glass-card tilt-card rounded-2xl p-3 text-left cursor-pointer reveal" style="--d: 210ms;">
+            <div class="glass-card-inner space-y-3">
+              <div class="rounded-xl overflow-hidden border border-[var(--border)]/60 aspect-[16/10]">
+                <img src="assets/theme_04_stardew.webp" loading="lazy" alt="V5 星露谷农场主题" class="w-full h-full object-cover block" />
+              </div>
+              <div class="px-1 pb-1">
+                <div class="text-xs font-mono text-[var(--muted-foreground)]">田园节奏</div>
+                <div class="text-sm font-bold text-[var(--foreground)] mt-0.5">星露谷农场</div>
+                <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed m-0">温润木框配羊皮纸卡面，细腻雨雪与萤火虫点缀。</p>
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Local-First Privacy, Reporting & Security -->
+      <section id="trust" class="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="glass-card tilt-card rounded-2xl p-6 reveal" style="--d: 0ms;">
+            <div class="glass-card-inner space-y-2.5">
+              <div class="text-xs font-mono text-[var(--muted-foreground)]">DAILY REPORT &amp; BACKUP</div>
+              <h3 class="text-base font-bold">一键导出今日日报与全量备份</h3>
+              <p class="text-xs leading-relaxed text-[var(--muted-foreground)]">
+                下班或晚自习结束时，一键生成结构化 Markdown 今日日报（已完成、待继续、番茄钟数与积分统计），并支持全表一致性 JSON 本地备份。
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-card tilt-card rounded-2xl p-6 reveal" style="--d: 80ms;">
+            <div class="glass-card-inner space-y-2.5">
+              <div class="text-xs font-mono text-[var(--muted-foreground)]">KEYCHAIN &amp; PRIVACY</div>
+              <h3 class="text-base font-bold">数据完全私有，凭据落入系统钥匙串</h3>
+              <p class="text-xs leading-relaxed text-[var(--muted-foreground)]">
+                无需注册账号、不向第三方上传日程；AI 密钥保存在操作系统原生凭据库，外部接口强制 HTTPS 并禁用重定向，保障学习与工作资料安全。
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-card tilt-card rounded-2xl p-6 reveal" style="--d: 160ms;">
+            <div class="glass-card-inner space-y-2.5">
+              <div class="text-xs font-mono text-[var(--muted-foreground)]">RELIABLE ENGINEERING</div>
+              <h3 class="text-base font-bold">原子事务与纵深安全审计</h3>
+              <p class="text-xs leading-relaxed text-[var(--muted-foreground)]">
+                Rust 后端采用 SQLite 写事务与幂等流水账本，前端富文本备注全链路 DOMPurify 净化配合严格 CSP，轻量稳定、长驻不卡顿。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clean Closing CTA -->
+      <section id="get-started" class="max-w-6xl mx-auto px-5 sm:px-8 pt-6 pb-20">
+        <div class="glass-card rounded-2xl p-7 sm:p-10 reveal">
+          <div class="glass-card-inner flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div class="space-y-2.5 max-w-xl">
+              <p class="text-xs font-mono uppercase tracking-[0.16em] text-[var(--muted-foreground)]">XMISSION OFFICE · v0.67.0</p>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">把今天的秩序，轻轻放在桌面上。</h2>
+              <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                支持 Windows 10/11 x64 与 macOS 11+ Universal（Apple 芯片 / Intel）。遵循 PolyForm Noncommercial License 1.0.0 许可，源码公开可审阅。
+              </p>
+            </div>
+            <div class="glass-pill-surface rounded-xl px-5 py-4 font-mono text-xs text-[var(--code-foreground)] space-y-1.5 shrink-0">
+              <div class="text-[var(--muted-foreground)]"># 从源码本地运行</div>
+              <div>npm install</div>
+              <div>npm run check</div>
+              <div>npm run tauri dev</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[var(--border)]/60 py-8">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--muted-foreground)]">
+        <div class="flex items-center gap-2">
+          <img src="assets/icon.png" alt="" class="w-4 h-4 rounded-sm" />
+          <span>Xmission Office · 秩序在眼前，专注成日常</span>
+        </div>
+        <div>Tauri 2 · Rust · React 18 · TypeScript · SQLite</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Frosted Glass Fullscreen Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8 bg-black/70" style="backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);" role="dialog" aria-modal="true" aria-label="界面高清预览">
+    <div class="max-w-6xl w-full flex flex-col items-center gap-3">
+      <button type="button" id="lightbox-close" class="self-end px-3.5 py-1.5 rounded-lg glass-pill-surface text-xs text-white cursor-pointer">
+        关闭预览 (Esc)
+      </button>
+      <img id="lightbox-img" src="assets/theme_02_parchment.webp" alt="" class="max-h-[82vh] max-w-full rounded-xl border border-white/20 shadow-2xl" />
+      <p id="lightbox-cap" class="text-xs text-white/90 text-center m-0"></p>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // 0. Light / Dark Mode Toggle
+      const modeBtn = document.getElementById("theme-mode-toggle");
+      const modeLabel = document.getElementById("theme-mode-label");
+      function syncModeLabel() {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        modeLabel.textContent = isDark ? "日间模式" : "夜间模式";
+      }
+      syncModeLabel();
+      modeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        if (isDark) {
+          document.documentElement.removeAttribute("data-theme");
+          try { localStorage.setItem("xmission-office-site-theme", "light"); } catch {}
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+          try { localStorage.setItem("xmission-office-site-theme", "dark"); } catch {}
+        }
+        syncModeLabel();
+      });
+
+      // 1. Scroll Reveal Stagger
+      const reveals = document.querySelectorAll(".reveal");
+      if (!reducedMotion && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add("is-visible"));
+      }
+
+      // 2. Subtle 3D Glass Tilt + Specular Cursor Glare
+      if (!reducedMotion) {
+        document.querySelectorAll(".tilt-card").forEach((card) => {
+          card.addEventListener("pointermove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width;
+            const py = (e.clientY - rect.top) / rect.height;
+            card.style.setProperty("--mx", `${(px * 100).toFixed(1)}%`);
+            card.style.setProperty("--my", `${(py * 100).toFixed(1)}%`);
+            const rx = (0.5 - py) * 5.2;
+            const ry = (px - 0.5) * 5.2;
+            card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`;
+          });
+          card.addEventListener("pointerleave", () => {
+            card.style.transform = "";
+          });
+        });
+      }
+
+      // 3. Interactive Hero Glass Office Widget
+      let xp = 460;
+      let coins = 428;
+      let level = 7;
+      let doneCount = 0;
+      const xpText = document.getElementById("demo-xp-text");
+      const coinsEl = document.getElementById("demo-coins");
+      const levelEl = document.getElementById("demo-level");
+      const xpBar = document.getElementById("demo-xp-bar");
+      const doneEl = document.getElementById("demo-done-count");
+      const floatSlot = document.getElementById("demo-float-slot");
+
+      function updateWalletUI(deltaText) {
+        const pct = Math.min(100, (xp / (level * 100)) * 100);
+        xpText.textContent = String(xp);
+        coinsEl.textContent = String(coins);
+        levelEl.textContent = String(level);
+        xpBar.style.width = `${pct.toFixed(1)}%`;
+        doneEl.textContent = `已完成 ${doneCount} / 4`;
+        if (deltaText) {
+          floatSlot.innerHTML = `<span class="xp-float-anim inline-block">${deltaText}</span>`;
+        }
+      }
+
+      document.querySelectorAll("#demo-task-list .office-task-row").forEach((row) => {
+        row.addEventListener("click", () => {
+          const val = Number(row.dataset.xp || 14);
+          const coinVal = Math.max(1, Math.floor(val / 2));
+          const isDone = row.classList.toggle("is-done");
+          const check = row.querySelector(".demo-check");
+          const title = row.querySelector(".demo-title");
+          if (isDone) {
+            check.textContent = "✓";
+            check.style.backgroundColor = "var(--primary)";
+            check.style.color = "var(--primary-foreground)";
+            title.style.textDecoration = "line-through";
+            xp += val;
+            coins += coinVal;
+            doneCount += 1;
+            updateWalletUI(`+${val} XP · +${coinVal} 积分`);
+          } else {
+            check.textContent = "";
+            check.style.backgroundColor = "transparent";
+            check.style.color = "";
+            title.style.textDecoration = "none";
+            xp = Math.max(0, xp - val);
+            coins = Math.max(0, coins - coinVal);
+            doneCount = Math.max(0, doneCount - 1);
+            updateWalletUI(`已撤回 -${val} XP`);
+          }
+        });
+      });
+
+      // Mini Pomodoro Countdown inside Glass Card
+      let pomoSecs = 25 * 60;
+      let pomoTimer = null;
+      const pomoReadout = document.getElementById("demo-pomo-readout");
+      const pomoBtn = document.getElementById("demo-pomo-toggle");
+      function renderPomo() {
+        const m = String(Math.floor(pomoSecs / 60)).padStart(2, "0");
+        const s = String(pomoSecs % 60).padStart(2, "0");
+        pomoReadout.textContent = `${m}:${s}`;
+      }
+      pomoBtn.addEventListener("click", () => {
+        if (pomoTimer) {
+          clearInterval(pomoTimer);
+          pomoTimer = null;
+          pomoBtn.textContent = "继续专注";
+        } else {
+          pomoBtn.textContent = "暂停专注";
+          pomoTimer = setInterval(() => {
+            if (pomoSecs > 0) {
+              pomoSecs -= 1;
+              renderPomo();
+            } else {
+              clearInterval(pomoTimer);
+              pomoTimer = null;
+              pomoBtn.textContent = "重新开始";
+            }
+          }, 1000);
+        }
+      });
+
+      // 4. Sliding Pill Workspace Switcher
+      const WORKSPACE_VIEWS = {
+        study: {
+          src: "assets/theme_02_parchment.webp",
+          cap: "羊皮纸手账视图 · 温润纸感排版、主章/支章层级与晨光风景侧栏，专注阅读不刺眼",
+          compact: false
+        },
+        schedule: {
+          src: "assets/03_schedule_timetable.webp",
+          cap: "教学周课表与固定排期 · 支持 Excel/CSV 导入、AI 课表识图、连堂合并与单周调课覆盖",
+          compact: false
+        },
+        plan: {
+          src: "assets/04b_calendar_ai_plan_panel.webp",
+          cap: "日历与 AI 周计划参谋 · 自动读取未来 7 天空档与节假日，按日生成时段建议与休息提示",
+          compact: false
+        },
+        focus: {
+          src: "assets/07_focus_mode.webp",
+          cap: "全屏沉浸专注模式 · 拖动风景侧栏铺满屏幕，极简番茄钟助力进入深度心流",
+          compact: false
+        },
+        widget: {
+          src: "assets/08_widget_floating.webp",
+          cap: "透明置顶桌面悬浮任务栏 · 520×700 无边框轻盈停靠桌角，支持透明度调节与靠边隐藏",
+          compact: true
+        }
+      };
+
+      const wsTrack = document.getElementById("workspace-tabs");
+      const wsIndicator = document.getElementById("workspace-indicator");
+      const wsImg = document.getElementById("workspace-img");
+      const wsCap = document.getElementById("workspace-caption");
+
+      function moveIndicator(btn) {
+        const trackRect = wsTrack.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        wsIndicator.style.width = `${btnRect.width}px`;
+        wsIndicator.style.height = `${btnRect.height}px`;
+        wsIndicator.style.transform = `translate3d(${btnRect.left - trackRect.left - 4}px, ${btnRect.top - trackRect.top - 4}px, 0)`;
+      }
+
+      const wsButtons = wsTrack.querySelectorAll("button");
+      wsButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const v = WORKSPACE_VIEWS[btn.dataset.view];
+          if (!v) return;
+          wsButtons.forEach((b) => b.setAttribute("aria-selected", String(b === btn)));
+          moveIndicator(btn);
+          wsImg.classList.add("is-swapping");
+          setTimeout(() => {
+            wsImg.src = v.src;
+            wsImg.classList.toggle("max-w-[440px]", v.compact);
+            wsImg.classList.toggle("my-4", v.compact);
+            wsImg.classList.toggle("rounded-lg", v.compact);
+            wsImg.classList.toggle("w-full", !v.compact);
+            wsCap.textContent = v.cap;
+            wsImg.classList.remove("is-swapping");
+          }, 140);
+        });
+      });
+      requestAnimationFrame(() => moveIndicator(wsButtons[0]));
+      window.addEventListener("resize", () => {
+        const active = wsTrack.querySelector('[aria-selected="true"]');
+        if (active) moveIndicator(active);
+      });
+
+      // 5. Interactive AI One-Line Capture Presets + AI Real Screenshots Switcher
+      const AI_PRESETS = [
+        {
+          input: "“周五下午 5 点前完成机器学习实验报告，很重要，大概需要 90 分钟”",
+          title: "完成机器学习课程实验报告",
+          cat: "分类 · study",
+          imp: "重要度 5/5",
+          urg: "紧迫度 4/5",
+          due: "截止 周五 17:00",
+          est: "估时 90 分钟"
+        },
+        {
+          input: "“每周一三五早上精读一篇分布式系统论文并整理笔记，每次 40 分钟”",
+          title: "精读分布式系统论文并整理一页笔记",
+          cat: "分类 · read · 每周 一/三/五",
+          imp: "重要度 4/5",
+          urg: "紧迫度 3/5",
+          due: "循环任务（连击计数）",
+          est: "估时 40 分钟"
+        },
+        {
+          input: "“明天上午 10 点前整理完部门季度复盘 PPT 和核心指标对比表，紧急”",
+          title: "整理季度复盘 PPT 与核心指标对比表",
+          cat: "分类 · meeting",
+          imp: "重要度 5/5",
+          urg: "紧迫度 5/5",
+          due: "截止 明日 10:00",
+          est: "估时 60 分钟"
+        }
+      ];
+      document.querySelectorAll("#ai-presets button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const p = AI_PRESETS[Number(btn.dataset.preset)];
+          if (!p) return;
+          document.getElementById("ai-input-preview").textContent = p.input;
+          const out = document.getElementById("ai-draft-output");
+          out.style.opacity = "0.4";
+          out.style.transform = "translateY(4px)";
+          setTimeout(() => {
+            document.getElementById("ai-out-title").textContent = p.title;
+            document.getElementById("ai-out-cat").textContent = p.cat;
+            document.getElementById("ai-out-imp").textContent = p.imp;
+            document.getElementById("ai-out-urg").textContent = p.urg;
+            document.getElementById("ai-out-due").textContent = p.due;
+            document.getElementById("ai-out-est").textContent = p.est;
+            out.style.opacity = "1";
+            out.style.transform = "";
+          }, 130);
+        });
+      });
+
+      const aiShotImg = document.getElementById("ai-shot-img");
+      const aiShotCap = document.getElementById("ai-shot-cap");
+      const aiShotBtns = document.querySelectorAll("#ai-shot-tabs button");
+      aiShotBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          aiShotBtns.forEach((b) => {
+            const active = b === btn;
+            b.setAttribute("aria-selected", String(active));
+            b.className = active
+              ? "px-3 py-1 rounded-md text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] border-0 cursor-pointer"
+              : "px-3 py-1 rounded-md text-xs font-medium glass-pill-surface text-[var(--muted-foreground)] cursor-pointer";
+          });
+          aiShotImg.classList.add("is-swapping");
+          setTimeout(() => {
+            aiShotImg.src = btn.dataset.src;
+            aiShotCap.textContent = btn.dataset.cap;
+            aiShotImg.classList.remove("is-swapping");
+          }, 140);
+        });
+      });
+
+      // 6. Frosted Lightbox Modal
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightbox-img");
+      const lbCap = document.getElementById("lightbox-cap");
+      function openLb(src, cap) {
+        lbImg.src = src;
+        lbImg.alt = cap || "高清预览";
+        lbCap.textContent = cap || "";
+        lb.classList.remove("hidden");
+        lb.classList.add("flex");
+      }
+      function closeLb() {
+        lb.classList.add("hidden");
+        lb.classList.remove("flex");
+      }
+      document.getElementById("workspace-stage").addEventListener("click", () => openLb(wsImg.src, wsCap.textContent));
+      document.getElementById("workspace-zoom").addEventListener("click", () => openLb(wsImg.src, wsCap.textContent));
+      document.getElementById("ai-shot-wrap").addEventListener("click", () => openLb(aiShotImg.src, aiShotCap.textContent));
+      document.querySelectorAll("[data-lightbox-src]").forEach((btn) => {
+        btn.addEventListener("click", () => openLb(btn.dataset.lightboxSrc, btn.dataset.lightboxCap));
+      });
+      document.getElementById("lightbox-close").addEventListener("click", closeLb);
+      lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+      window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
+    })();
+  </script>
+</body>
+</html>
